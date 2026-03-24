@@ -771,7 +771,7 @@ const T = {
     secShareMsg: '💬 Share Message',
     lblShareMsg: 'Message to send with the file',
     lblShareHint: 'Sent alongside the .html file on WhatsApp, Telegram, etc.',
-    defaultShareMsg: (title) => `📸 Check out this documentary I made: "${title}"\n\nYou can create your own event documentary — for free — using the PECO app:\n🔗 https://friendsprofile.netlify.app`,
+    defaultShareMsg: (title) => `📸 Check out this documentary I made: "${title}"\n\nYou can create your own event documentary — for free — using the PECO app:\n🔗https://peco-app-baggi.netlify.app`,
     lblModalTitle: '📄 Generated HTML Preview',
     lblLoading: 'Loading…',
     cats: ['📸 Photography','🎉 Celebration','🌍 Travel','🎪 Event','🕌 Cultural','🎓 Ceremony','🌿 Nature','🏛️ Documentary'],
@@ -783,20 +783,20 @@ const T = {
       photographer: 'Name or handle',
     },
     seeMap: '🗺️ See on Map',
-    builtWith: 'Create your own event documentary with PECO @ https://friendsprofile.netlify.app',
+    builtWith: 'Create your own event documentary with PECO @ https://peco-app-baggi.netlify.app',
     noTitle: 'Your Event Title',
     noSubtitle: 'Subtitle or tagline appears here',
     noDesc: 'Description will appear here…',
   },
   ar: {
-    appTitle: 'بيكو — منشئ التوثيق',
+    appTitle: 'بيكو — توثيق المناسبات السعيدة',
     topTagline: 'الأماكن، الفعاليات، الاحتفالات، المناسبات',
     langBtn: 'English',
-    secCategory: '🏷️ نوع الحدث',
-    secBasic: '📋 تفاصيل الحدث',
+    secCategory: '🏷️ نوع المناسبة',
+    secBasic: '📋 تفاصيل المناسبة',
     secCover: '🖼️ صورة الغلاف',
     secGallery: '🗂️ معرض الصور',
-    lblTitle: 'عنوان الحدث',
+    lblTitle: 'عنوان المناسبة',
     lblSubtitle: 'العنوان الفرعي / الوصف المختصر',
     lblDesc: 'الوصف / القصة',
     lblDate: 'التاريخ',
@@ -827,20 +827,20 @@ const T = {
     secShareMsg: '💬 رسالة المشاركة',
     lblShareMsg: 'الرسالة التي ترسلها مع الملف',
     lblShareHint: 'تُرسل مع ملف .html على واتساب وتيليجرام وغيرها.',
-    defaultShareMsg: (title) => `📸 شاهد هذا التوثيق الذي أنشأته: "${title}"\n\nيمكنك إنشاء توثيق خاص بك — مجاناً — باستخدام تطبيق PECO:\n🔗 https://friendsprofile.netlify.app`,
+    defaultShareMsg: (title) => `📸 شاهد هذا التوثيق الذي أنشأته: "${title}"\n\nيمكنك إنشاء توثيق خاص بك — مجاناً — باستخدام تطبيق PECO:\n🔗 https://peco-app-baggi.netlify.app`,
     lblModalTitle: '📄 معاينة الملف الناتج',
     lblLoading: 'جاري التحميل…',
     cats: ['📸 تصوير','🎉 احتفال','🌍 سفر','🎪 فعالية','🕌 ثقافي','🎓 حفل تخرج','🌿 طبيعة','🏛️ وثائقي'],
     placeholders: {
-      title: 'مثال: جولة التراث في المدينة القديمة',
-      subtitle: 'مثال: توثيق روح المدينة',
+      title: 'مثال: إحتفال الجالية بعيد الفطر المبارك',
+      subtitle: 'مثال: بالنادي السوداني ',
       desc: 'اكتب عن هذا الحدث أو المكان أو المناسبة…',
       location: 'المدينة، البلد',
       photographer: 'الاسم أو المعرف',
     },
     seeMap: '🗺️ عرض على الخريطة',
-    builtWith: 'أنشئ توثيقك الخاص مع PECO @ https://friendsprofile.netlify.app',
-    noTitle: 'عنوان الحدث',
+    builtWith: 'أنشئ توثيقك الخاص مع PECO @ https://peco-app-baggi.netlify.app',
+    noTitle: 'عنوان المناسبة',
     noSubtitle: 'العنوان الفرعي هنا',
     noDesc: 'الوصف سيظهر هنا…',
   }
@@ -963,7 +963,7 @@ document.getElementById('categoryChips').addEventListener('click', e => {
     const msgEl = document.getElementById('inpShareMsg');
     const currentTitle = getVal('inpTitle') || t.noTitle;
     // Only auto-update if the message still looks like a default (contains the PECO URL)
-    if (msgEl.value.includes('https://friendsprofile.netlify.app')) {
+    if (msgEl.value.includes('https://peco-app-baggi.netlify.app')) {
       msgEl.value = t.defaultShareMsg(currentTitle);
     }
   });
@@ -1021,8 +1021,8 @@ function updatePreview() {
   const genDateEl = document.getElementById('outGenDate');
   photographerEl.textContent = photographer || '';
   genDateEl.innerHTML = lang === 'ar'
-    ? `أنشئ توثيقك مع <a href="https://friendsprofile.netlify.app" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">PECO 🔗</a>`
-    : `Create your own with <a href="https://friendsprofile.netlify.app" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">PECO 🔗</a>`;
+    ? `أنشئ توثيقك مع <a href="https://peco-app-baggi.netlify.app" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">PECO 🔗</a>`
+    : `Create your own with <a href="https://peco-app-baggi.netlify.app" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">PECO 🔗</a>`;
 }
 
 // ── GENERATE OUTPUT HTML ──
@@ -1110,8 +1110,8 @@ h1{font-family:'Playfair Display',serif;font-size:1.8rem;line-height:1.2;margin-
       ${photographer ? `<div class="footer-date">📷 ${escHtml(photographer)}</div>` : ''}
       <div class="footer-credit">
         ${isRTL
-          ? `أنشئ توثيقك الخاص مع <a href="https://friendsprofile.netlify.app" target="_blank">PECO 🔗</a>`
-          : `Create your own event documentary with <a href="https://friendsprofile.netlify.app" target="_blank">PECO 🔗</a>`
+          ? `أنشئ توثيقك الخاص مع <a href="https://peco-app-baggi.netlify.app" target="_blank">PECO 🔗</a>`
+          : `Create your own event documentary with <a href="https://peco-app-baggi.netlify.app" target="_blank">PECO 🔗</a>`
         }
       </div>
       <div class="footer-date">${new Date().toLocaleDateString(lang === 'ar' ? 'ar-SA' : 'en-US')}</div>
@@ -1428,4 +1428,3 @@ applyLang();
 </script>
 </body>
 </html>
-
