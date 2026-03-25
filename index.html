@@ -50,17 +50,10 @@
       line-height: 1.1;
     }
     .top-bar h1 span { color: var(--accent); }
-    .top-bar-title {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+    .top-bar-title { display: flex; align-items: center; gap: 0.6rem; }
     .top-logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
+      width: 38px; height: 38px;
+      border-radius: 50%; object-fit: cover; flex-shrink: 0;
       border: 2px solid rgba(255,255,255,0.2);
     }
     .top-bar-text { display: flex; flex-direction: column; }
@@ -79,18 +72,13 @@
       border-radius: 2rem;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 500;
+      font-size: 0.85rem; font-weight: 500;
       transition: background 0.2s;
     }
     .lang-btn:hover { background: rgba(255,255,255,0.22); }
 
     /* ── LAYOUT ── */
-    .wrap {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 1.6rem 1rem;
-    }
+    .wrap { max-width: 680px; margin: 0 auto; padding: 1.6rem 1rem; }
 
     .section-card {
       background: var(--card-bg);
@@ -103,12 +91,9 @@
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 1.05rem; font-weight: 700;
       margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
       color: var(--ink);
       border-bottom: 2px solid var(--accent);
       padding-bottom: 0.5rem;
@@ -116,11 +101,9 @@
 
     label {
       display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.8rem; font-weight: 600;
       color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      text-transform: uppercase; letter-spacing: 0.05em;
       margin-bottom: 0.35rem;
     }
 
@@ -130,10 +113,8 @@
       border: 1.5px solid var(--border);
       border-radius: 0.6rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      color: var(--ink);
-      background: #fafaf8;
-      outline: none;
+      font-size: 0.95rem; color: var(--ink);
+      background: #fafaf8; outline: none;
       transition: border-color 0.2s;
       margin-bottom: 0.8rem;
     }
@@ -145,70 +126,207 @@
 
     /* ── COVER PHOTO ── */
     .cover-drop {
-      width: 100%;
-      height: 180px;
+      width: 100%; height: 180px;
       border: 2.5px dashed var(--border);
       border-radius: var(--radius);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      cursor: pointer;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem; cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
-      overflow: hidden;
-      position: relative;
-      background: #fafaf8;
-      margin-bottom: 0.8rem;
+      overflow: hidden; position: relative;
+      background: #fafaf8; margin-bottom: 0.8rem;
     }
     .cover-drop:hover { border-color: var(--accent); background: #fdf6ee; }
     .cover-drop.has-img { border-style: solid; border-color: var(--accent); }
-    .cover-drop img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      position: absolute; top:0; left:0;
-    }
-    .cover-drop-label {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-align: center;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .cover-drop-label .big-icon { font-size: 2.5rem; display: block; }
+    .cover-drop img { width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; }
+    .cover-drop-label { font-size:0.85rem; color:var(--muted); text-align:center; z-index:1; pointer-events:none; }
+    .cover-drop-label .big-icon { font-size:2.5rem; display:block; }
     .cover-overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,.45);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 0.85rem; font-weight: 600;
-      opacity: 0; transition: opacity 0.25s; z-index: 2;
+      position:absolute; inset:0;
+      background:rgba(0,0,0,.45);
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-size:0.85rem; font-weight:600;
+      opacity:0; transition:opacity 0.25s; z-index:2;
     }
-    .cover-drop:hover .cover-overlay { opacity: 1; }
+    .cover-drop:hover .cover-overlay { opacity:1; }
 
     /* ── GALLERY GRID ── */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.5rem;
       margin-top: 0.7rem;
     }
+
+    /* Each gallery cell: image + caption input stacked */
     .gallery-item {
-      aspect-ratio: 1;
       border-radius: 0.5rem;
       overflow: hidden;
       position: relative;
       border: 2px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      background: #fafaf8;
+      transition: border-color 0.2s;
     }
-    .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; }
+    .gallery-item:hover { border-color: var(--accent); }
+
+    .gallery-item-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Size warning badge on photo */
+    .photo-size-warn {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      background: rgba(239,68,68,0.92);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.3rem;
+      z-index: 3;
+      line-height: 1.4;
+      pointer-events: none;
+    }
+
     .gallery-item .del-btn {
-      position: absolute; top: 3px; right: 3px;
-      background: rgba(200,64,64,.85);
+      position: absolute; top: 4px; right: 4px;
+      background: rgba(200,64,64,.90);
       color: #fff; border: none; border-radius: 50%;
       width: 22px; height: 22px;
       font-size: 0.75rem; cursor: pointer;
       display: none; align-items: center; justify-content: center;
+      z-index: 4;
     }
     .gallery-item:hover .del-btn { display: flex; }
+
+    /* Caption indicator badge on photo */
+    .caption-badge {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      right: 4px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 0.6rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.25rem;
+      z-index: 3;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: background 0.2s;
+      line-height: 1.4;
+    }
+    .caption-badge:hover { background: rgba(200,131,59,0.85); }
+    .caption-badge.empty { opacity: 0.7; }
+
+    /* ── CAPTION BOTTOM SHEET ── */
+    .caption-sheet-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 300;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .caption-sheet-backdrop.open {
+      display: block;
+      opacity: 1;
+    }
+    .caption-sheet {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--card-bg);
+      border-radius: 1.2rem 1.2rem 0 0;
+      padding: 0 1.2rem 1.2rem;
+      z-index: 301;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 -8px 32px rgba(0,0,0,0.18);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .caption-sheet.open {
+      transform: translateY(0);
+    }
+    /* Handle bar */
+    .caption-sheet-handle {
+      width: 40px; height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin: 0.75rem auto 1rem;
+    }
+    .caption-sheet-photo {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .caption-sheet-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .caption-sheet-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: 0.75rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--ink);
+      background: #fafaf8;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 0.85rem;
+    }
+    .caption-sheet-input:focus {
+      border-color: var(--accent);
+      background: #fff;
+    }
+    .caption-sheet-actions {
+      display: flex; gap: 0.6rem;
+    }
+    .caption-sheet-save {
+      flex: 2;
+      padding: 0.85rem;
+      background: var(--accent);
+      color: #fff;
+      border: none; border-radius: 0.7rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .caption-sheet-save:hover { opacity: 0.88; }
+    .caption-sheet-clear {
+      flex: 1;
+      padding: 0.85rem;
+      background: #f1f5f9;
+      color: var(--muted);
+      border: none; border-radius: 0.7rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .caption-sheet-clear:hover { background: #e2e8f0; }
+
     .gallery-add {
       aspect-ratio: 1;
       border: 2px dashed var(--border);
@@ -220,12 +338,9 @@
     .gallery-add:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── PHOTO BUTTONS ── */
-    .photo-btns {
-      display: flex; gap: 0.6rem; margin-top: 0.5rem;
-    }
+    .photo-btns { display: flex; gap: 0.6rem; margin-top: 0.5rem; }
     .btn-cam, .btn-gal {
-      flex: 1;
-      padding: 0.6rem;
+      flex: 1; padding: 0.6rem;
       border: none; border-radius: 0.5rem;
       font-family: 'DM Sans', sans-serif;
       font-weight: 600; font-size: 0.85rem;
@@ -237,9 +352,7 @@
     .btn-cam:hover, .btn-gal:hover { opacity: 0.88; transform: translateY(-1px); }
 
     /* ── CATEGORY CHIPS ── */
-    .chip-row {
-      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;
-    }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
     .chip {
       padding: 0.35rem 0.85rem;
       border: 1.5px solid var(--border);
@@ -260,19 +373,15 @@
     .toggle-row input[type="checkbox"] {
       width: 18px; height: 18px;
       accent-color: var(--accent);
-      margin: 0; padding: 0;
-      flex-shrink: 0;
+      margin: 0; padding: 0; flex-shrink: 0;
     }
     .toggle-row span { font-size: 0.85rem; color: var(--ink); }
 
     /* ── LIVE PREVIEW ── */
-    .preview-wrap {
-      margin-bottom: 1.2rem;
-    }
+    .preview-wrap { margin-bottom: 1.2rem; }
     .preview-label {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 1rem; font-weight: 700;
       margin-bottom: 0.7rem;
       display: flex; align-items: center; gap: 0.5rem;
       color: var(--ink);
@@ -292,231 +401,214 @@
     .out-cover {
       width: 100%; height: 200px;
       background: linear-gradient(135deg, #1a1a2e, #3b3060);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
     .out-cover img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
-    .out-cover-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65));
-    }
+    .out-cover-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(0,0,0,0.1),rgba(0,0,0,0.65)); }
     .out-cover-badge {
-      position: absolute; top: 0.8rem;
-      background: var(--accent);
-      color: #fff; font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.25rem 0.65rem; border-radius: 2rem;
+      position:absolute; top:0.8rem;
+      background:var(--accent);
+      color:#fff; font-size:0.7rem; font-weight:700;
+      letter-spacing:0.08em; text-transform:uppercase;
+      padding:0.25rem 0.65rem; border-radius:2rem;
     }
-    [dir="ltr"] .out-cover-badge { left: 0.8rem; }
-    [dir="rtl"] .out-cover-badge { right: 0.8rem; }
+    [dir="ltr"] .out-cover-badge { left:0.8rem; }
+    [dir="rtl"] .out-cover-badge { right:0.8rem; }
     .out-cover-date {
-      position: absolute; bottom: 0.8rem;
-      font-size: 0.75rem; color: rgba(255,255,255,0.75);
-      background: rgba(0,0,0,0.45); padding: 0.2rem 0.55rem; border-radius: 1rem;
+      position:absolute; bottom:0.8rem;
+      font-size:0.75rem; color:rgba(255,255,255,0.75);
+      background:rgba(0,0,0,0.45); padding:0.2rem 0.55rem; border-radius:1rem;
     }
-    [dir="ltr"] .out-cover-date { right: 0.8rem; }
-    [dir="rtl"] .out-cover-date { left: 0.8rem; }
+    [dir="ltr"] .out-cover-date { right:0.8rem; }
+    [dir="rtl"] .out-cover-date { left:0.8rem; }
     .out-body { padding: 1.2rem; }
-    .out-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-      line-height: 1.2;
-    }
-    .out-subtitle {
-      font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.8rem;
-    }
-    .out-desc {
-      font-size: 0.875rem; line-height: 1.6; color: #cbd5e1;
-      margin-bottom: 1rem;
-    }
-    .out-meta-row {
-      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;
-    }
+    .out-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; margin-bottom:0.3rem; line-height:1.2; }
+    .out-subtitle { font-size:0.8rem; color:#94a3b8; margin-bottom:0.8rem; }
+    .out-desc { font-size:0.875rem; line-height:1.6; color:#cbd5e1; margin-bottom:1rem; }
+    .out-meta-row { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
     .out-meta-chip {
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.12);
-      padding: 0.3rem 0.7rem;
-      border-radius: 2rem;
-      font-size: 0.75rem; color: #cbd5e1;
-      display: flex; align-items: center; gap: 0.35rem;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.12);
+      padding:0.3rem 0.7rem; border-radius:2rem;
+      font-size:0.75rem; color:#cbd5e1;
+      display:flex; align-items:center; gap:0.35rem;
     }
+    /* Preview gallery with captions */
     .out-gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0.4rem;
       margin-bottom: 1rem;
     }
-    .out-gallery img {
-      width: 100%; aspect-ratio: 1;
-      object-fit: cover; border-radius: 0.4rem;
+    .out-gallery-item { display: flex; flex-direction: column; }
+    .out-gallery-item img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:0.4rem; }
+    .out-gallery-caption {
+      font-size: 0.65rem;
+      color: #94a3b8;
+      text-align: center;
+      padding: 0.2rem 0.1rem 0;
+      line-height: 1.3;
+      font-style: italic;
     }
     .out-map-btn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: #22c55e; color: #fff;
-      padding: 0.55rem 1rem; border-radius: 0.5rem;
-      font-size: 0.8rem; font-weight: 700;
-      text-decoration: none; margin-bottom: 0.5rem;
+      display:inline-flex; align-items:center; gap:0.4rem;
+      background:#22c55e; color:#fff;
+      padding:0.55rem 1rem; border-radius:0.5rem;
+      font-size:0.8rem; font-weight:700;
+      text-decoration:none; margin-bottom:0.5rem;
     }
     .out-footer {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 0.7rem;
-      font-size: 0.7rem; color: #475569;
-      display: flex; justify-content: space-between; align-items: center;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:0.7rem;
+      font-size:0.7rem; color:#475569;
+      display:flex; justify-content:space-between; align-items:center;
     }
 
     /* ── ACTION BUTTONS ── */
-    .actions {
-      display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem;
-    }
+    .actions { display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1rem; }
     .btn-preview, .btn-download {
-      flex: 1; min-width: 140px;
-      padding: 0.9rem 1rem;
-      border: none; border-radius: 0.7rem;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700; font-size: 0.95rem;
-      cursor: pointer; transition: opacity 0.2s, transform 0.15s;
+      flex:1; min-width:140px;
+      padding:0.9rem 1rem;
+      border:none; border-radius:0.7rem;
+      font-family:'DM Sans',sans-serif;
+      font-weight:700; font-size:0.95rem;
+      cursor:pointer; transition:opacity 0.2s, transform 0.15s;
     }
-    .btn-preview { background: #1e293b; color: #fff; }
-    .btn-download { background: var(--accent); color: #fff; }
-    .btn-preview:hover, .btn-download:hover, .btn-share:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-preview { background:#1e293b; color:#fff; }
+    .btn-download { background:var(--accent); color:#fff; }
+    .btn-preview:hover, .btn-download:hover, .btn-share:hover { opacity:0.88; transform:translateY(-2px); }
     .btn-share {
-      flex: 1; min-width: 110px;
-      padding: 0.9rem 1rem;
-      border: none; border-radius: 0.7rem;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700; font-size: 0.95rem;
-      cursor: pointer; transition: opacity 0.2s, transform 0.15s;
-      background: #6366f1; color: #fff;
+      flex:1; min-width:110px;
+      padding:0.9rem 1rem;
+      border:none; border-radius:0.7rem;
+      font-family:'DM Sans',sans-serif;
+      font-weight:700; font-size:0.95rem;
+      cursor:pointer; transition:opacity 0.2s, transform 0.15s;
+      background:#6366f1; color:#fff;
     }
 
     /* ── MODAL ── */
-    .modal {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.95);
-      z-index: 200;
-      display: none; flex-direction: column;
-    }
-    .modal.active { display: flex; }
+    .modal { position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:200; display:none; flex-direction:column; }
+    .modal.active { display:flex; }
     .modal-hdr {
-      background: #1e293b;
-      padding: 0.9rem 1.2rem;
-      display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid #334155;
+      background:#1e293b; padding:0.9rem 1.2rem;
+      display:flex; justify-content:space-between; align-items:center;
+      border-bottom:1px solid #334155;
     }
-    .modal-hdr span { color: #f1f5f9; font-family: 'Playfair Display', serif; font-size: 1rem; }
+    .modal-hdr span { color:#f1f5f9; font-family:'Playfair Display',serif; font-size:1rem; }
     .modal-close {
-      background: #334155; border: none; color: #f1f5f9;
-      width: 36px; height: 36px; border-radius: 50%;
-      font-size: 1.4rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      background:#334155; border:none; color:#f1f5f9;
+      width:36px; height:36px; border-radius:50%;
+      font-size:1.4rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
     }
-    .modal-close:hover { background: var(--red); }
-    .modal-body { flex: 1; position: relative; }
-    .modal-body iframe { width: 100%; height: 100%; border: none; }
+    .modal-close:hover { background:var(--red); }
+    .modal-body { flex:1; position:relative; }
+    .modal-body iframe { width:100%; height:100%; border:none; }
     .modal-loading {
-      position: absolute; inset: 0;
-      background: #0e0e10;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: #f1f5f9; gap: 1rem;
+      position:absolute; inset:0; background:#0e0e10;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      color:#f1f5f9; gap:1rem;
     }
     .spinner {
-      width: 40px; height: 40px;
-      border: 4px solid #334155;
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.9s linear infinite;
+      width:40px; height:40px;
+      border:4px solid #334155;
+      border-top-color:var(--accent);
+      border-radius:50%;
+      animation:spin 0.9s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin { to { transform:rotate(360deg); } }
 
-    .hidden { display: none !important; }
+    .hidden { display:none !important; }
 
     /* ── QUALITY PRESET BUTTONS ── */
     .quality-btns {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem;
-      margin-bottom: 1rem;
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:0.6rem; margin-bottom:1rem;
     }
     .q-btn {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 0.2rem;
-      padding: 0.8rem 0.4rem;
-      border: 2px solid var(--border);
-      border-radius: 0.75rem;
-      background: #fafaf8;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s, transform 0.15s;
-      font-family: 'DM Sans', sans-serif;
-      text-align: center;
+      display:flex; flex-direction:column; align-items:center;
+      gap:0.2rem; padding:0.8rem 0.4rem;
+      border:2px solid var(--border); border-radius:0.75rem;
+      background:#fafaf8; cursor:pointer;
+      transition:border-color 0.2s, background 0.2s, transform 0.15s;
+      font-family:'DM Sans',sans-serif; text-align:center;
     }
-    .q-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .q-btn:hover { border-color:var(--accent); transform:translateY(-1px); }
     .q-btn.active {
-      border-color: var(--accent);
-      background: #fdf6ee;
-      box-shadow: 0 0 0 3px rgba(200,131,59,0.15);
+      border-color:var(--accent); background:#fdf6ee;
+      box-shadow:0 0 0 3px rgba(200,131,59,0.15);
     }
-    .q-icon { font-size: 1.4rem; }
-    .q-title { font-size: 0.8rem; font-weight: 700; color: var(--ink); }
-    .q-sub   { font-size: 0.7rem; color: var(--muted); }
-    .q-detail { font-size: 0.65rem; color: var(--muted); font-family: monospace; margin-top: 0.1rem; }
+    .q-icon { font-size:1.4rem; }
+    .q-title { font-size:0.8rem; font-weight:700; color:var(--ink); }
+    .q-sub   { font-size:0.7rem; color:var(--muted); }
+    .q-detail { font-size:0.65rem; color:var(--muted); font-family:monospace; margin-top:0.1rem; }
 
     /* ── SIZE METER ── */
     .size-meter {
-      background: #fafaf8;
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 0.9rem 1rem;
+      background:#fafaf8; border:1px solid var(--border);
+      border-radius:0.75rem; padding:0.9rem 1rem;
     }
     .size-meter-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem; font-weight: 600; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.05em;
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom:0.5rem;
+      font-size:0.8rem; font-weight:600; color:var(--muted);
+      text-transform:uppercase; letter-spacing:0.05em;
     }
     .size-value {
-      font-size: 1.1rem; font-weight: 800;
-      font-family: 'Playfair Display', serif;
-      color: var(--ink);
+      font-size:1.1rem; font-weight:800;
+      font-family:'Playfair Display',serif; color:var(--ink);
     }
     .size-bar-track {
-      width: 100%; height: 10px;
-      background: #e2ddd5;
-      border-radius: 5px; overflow: hidden;
-      margin-bottom: 0.5rem;
+      width:100%; height:10px; background:#e2ddd5;
+      border-radius:5px; overflow:hidden; margin-bottom:0.5rem;
     }
     .size-bar-fill {
-      height: 100%; border-radius: 5px;
-      transition: width 0.4s ease, background 0.4s ease;
-      width: 0%;
-      background: var(--green);
+      height:100%; border-radius:5px;
+      transition:width 0.4s ease, background 0.4s ease;
+      width:0%; background:var(--green);
     }
-    .size-status {
-      font-size: 0.8rem; font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
+    .size-status { font-size:0.8rem; font-weight:600; margin-bottom:0.4rem; }
     .size-breakdown {
-      font-size: 0.72rem; color: var(--muted);
-      display: flex; gap: 0.8rem; flex-wrap: wrap;
+      font-size:0.72rem; color:var(--muted);
+      display:flex; gap:0.8rem; flex-wrap:wrap;
     }
-    .size-breakdown span { white-space: nowrap; }
+    .size-breakdown span { white-space:nowrap; }
 
-    /* Recompressing spinner overlay on gallery/cover */
-    .recompressing {
-      position: relative; pointer-events: none;
-    }
+    /* Recompressing overlay */
+    .recompressing { position:relative; pointer-events:none; }
     .recompressing::after {
-      content: '⏳ Recompressing…';
-      position: absolute; inset: 0;
-      background: rgba(245,240,232,0.85);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; font-weight: 600; color: var(--muted);
-      border-radius: inherit;
-      z-index: 5;
+      content:'⏳ Recompressing…';
+      position:absolute; inset:0;
+      background:rgba(245,240,232,0.85);
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.8rem; font-weight:600; color:var(--muted);
+      border-radius:inherit; z-index:5;
     }
+
+    /* ── PER-PHOTO SIZE WARNING BANNER ── */
+    .photo-warn-banner {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+      border-radius: 0.6rem;
+      padding: 0.6rem 0.8rem;
+      margin-top: 0.7rem;
+      font-size: 0.78rem;
+      color: #b91c1c;
+      line-height: 1.5;
+      display: none;
+    }
+    .photo-warn-banner.visible { display: block; }
+    .photo-warn-banner strong { font-weight: 700; }
+    .photo-warn-list {
+      margin-top: 0.35rem;
+      padding-left: 1rem;
+      list-style: disc;
+    }
+    [dir="rtl"] .photo-warn-list { padding-left: 0; padding-right: 1rem; }
+    .photo-warn-list li { margin-bottom: 0.15rem; }
   </style>
 </head>
 <body>
@@ -553,16 +645,12 @@
   <!-- BASIC INFO -->
   <div class="section-card">
     <div class="section-title" id="secBasic">📋 Event Details</div>
-
     <label id="lblTitle">Event Title</label>
     <input type="text" id="inpTitle" placeholder="e.g. Old Town Heritage Walk">
-
     <label id="lblSubtitle">Subtitle / Tagline</label>
     <input type="text" id="inpSubtitle" placeholder="e.g. Documenting the soul of the city">
-
     <label id="lblDesc">Description / Story</label>
     <textarea id="inpDesc" rows="4" placeholder="Write about this event, occasion, or place..."></textarea>
-
     <div class="form-row">
       <div>
         <label id="lblDate">Date</label>
@@ -573,10 +661,8 @@
         <input type="text" id="inpLocation" placeholder="City, Country">
       </div>
     </div>
-
     <label id="lblPhotographer">Photographer / Author</label>
     <input type="text" id="inpPhotographer" placeholder="Name or handle">
-
     <div class="toggle-row">
       <input type="checkbox" id="chkMap" checked>
       <span id="lblMapLink">🗺️ Include Google Maps link</span>
@@ -604,8 +690,14 @@
   <!-- PHOTO GALLERY -->
   <div class="section-card">
     <div class="section-title" id="secGallery">🗂️ Photo Gallery</div>
+    <p style="font-size:0.75rem; color:var(--muted); margin-bottom:0.5rem;" id="lblGalHint">Up to 12 photos • tap a photo to edit its caption</p>
     <div class="gallery-grid" id="galleryGrid">
       <div class="gallery-add" onclick="triggerInput('inpGalMulti')" title="Add photos">＋</div>
+    </div>
+    <!-- Per-photo size warning banner -->
+    <div class="photo-warn-banner" id="photoWarnBanner">
+      <strong id="photoWarnTitle">⚠️ Large photos detected</strong>
+      <ul class="photo-warn-list" id="photoWarnList"></ul>
     </div>
     <input type="file" id="inpGalCam" accept="image/*" capture="environment" class="hidden" onchange="handleGallery(this)">
     <input type="file" id="inpGalMulti" accept="image/*" multiple class="hidden" onchange="handleGallery(this)">
@@ -613,7 +705,6 @@
       <button class="btn-cam" onclick="triggerInput('inpGalCam')" id="btnGalCam">📷 Camera</button>
       <button class="btn-gal" onclick="triggerInput('inpGalMulti')" id="btnGalGal">🖼️ Gallery (Multi)</button>
     </div>
-    <p style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;" id="lblGalHint">Up to 12 photos • hover a photo to remove it</p>
   </div>
 
   <!-- QUALITY & SIZE -->
@@ -621,27 +712,25 @@
     <div class="section-title" id="secQuality">⚙️ Output Quality & File Size</div>
     <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.9rem;" id="lblQualityDesc">Higher quality = larger file. Changing preset re-compresses all photos.</p>
     <div class="quality-btns" id="qualityBtns">
-      <button class="q-btn active" data-preset="low"    onclick="setPreset('low')"    id="qBtnLow">
+      <button class="q-btn" data-preset="low" onclick="setPreset('low')" id="qBtnLow">
         <span class="q-icon">🟢</span>
         <span class="q-title" id="qLowTitle">Small</span>
         <span class="q-sub" id="qLowSub">Best for sharing</span>
         <span class="q-detail">600px · 50%</span>
       </button>
-      <button class="q-btn" data-preset="medium" onclick="setPreset('medium')" id="qBtnMedium">
+      <button class="q-btn active" data-preset="medium" onclick="setPreset('medium')" id="qBtnMedium">
         <span class="q-icon">🟡</span>
         <span class="q-title" id="qMedTitle">Balanced</span>
         <span class="q-sub" id="qMedSub">Recommended</span>
         <span class="q-detail">900px · 72%</span>
       </button>
-      <button class="q-btn" data-preset="high"   onclick="setPreset('high')"   id="qBtnHigh">
+      <button class="q-btn" data-preset="high" onclick="setPreset('high')" id="qBtnHigh">
         <span class="q-icon">🔴</span>
         <span class="q-title" id="qHighTitle">High Quality</span>
         <span class="q-sub" id="qHighSub">Best detail</span>
         <span class="q-detail">1400px · 88%</span>
       </button>
     </div>
-
-    <!-- Live size meter -->
     <div class="size-meter" id="sizeMeter" style="display:none;">
       <div class="size-meter-header">
         <span id="lblSizeMeter">Estimated file size</span>
@@ -695,6 +784,26 @@
 
 </div><!-- /wrap -->
 
+<!-- CAPTION BOTTOM SHEET -->
+<div class="caption-sheet-backdrop" id="captionBackdrop" onclick="closeCaptionSheet()"></div>
+<div class="caption-sheet" id="captionSheet">
+  <div class="caption-sheet-handle"></div>
+  <img class="caption-sheet-photo" id="captionSheetPhoto" src="" alt="">
+  <span class="caption-sheet-label" id="captionSheetLabel">Add Caption</span>
+  <input
+    type="text"
+    class="caption-sheet-input"
+    id="captionSheetInput"
+    placeholder="Add caption…"
+    maxlength="80"
+    autocomplete="off"
+  >
+  <div class="caption-sheet-actions">
+    <button class="caption-sheet-clear" id="captionSheetClear" onclick="clearCaption()">🗑️ Clear</button>
+    <button class="caption-sheet-save" id="captionSheetSave" onclick="saveCaption()">✓ Save</button>
+  </div>
+</div>
+
 <!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-hdr">
@@ -716,19 +825,22 @@ let lang = 'ar';
 let selectedCategory = '📸 Photography';
 let coverB64 = null;
 let galleryB64 = [];
+let galleryCaptions = [];   // NEW: parallel array of caption strings
 
-// Compression settings — driven by quality preset picker
-// Each preset: [coverMaxW, galleryMaxW, jpegQuality]
+// Compression settings
 const PRESETS = {
-  low:    { coverW: 600,  galW: 480,  q: 0.50, label: '🟢' },
-  medium: { coverW: 900,  galW: 700,  q: 0.72, label: '🟡' },
-  high:   { coverW: 1400, galW: 1000, q: 0.88, label: '🔴' },
+  low:    { coverW: 600,  galW: 480,  q: 0.50 },
+  medium: { coverW: 900,  galW: 700,  q: 0.72 },
+  high:   { coverW: 1400, galW: 1000, q: 0.88 },
 };
 let currentPreset = 'medium';
 
-// Raw original files kept so we can re-compress on preset change
+// Raw original files for re-compression
 let rawCoverFile = null;
 let rawGalleryFiles = [];
+
+// Per-photo size cap: warn if single photo > this many bytes (binary estimate)
+const PHOTO_SIZE_CAP = 500 * 1024; // 500 KB
 
 // ── I18N ──
 const T = {
@@ -748,7 +860,14 @@ const T = {
     lblPhotographer: 'Photographer / Author',
     lblMapLink: '🗺️ Include Google Maps link',
     lblCoverTap: 'Tap to set cover photo',
-    lblGalHint: 'Up to 12 photos • hover a photo to remove it',
+    lblGalHint: 'Up to 12 photos • tap the ✏️ bar to add a caption',
+    captionPlaceholder: 'Add caption…',
+    captionSheetLabel: '✏️ Photo Caption',
+    captionSheetSave: '✓ Save Caption',
+    captionSheetClear: '🗑️ Clear',
+    photoWarnTitle: '⚠️ Large photos detected',
+    photoWarnBody: 'These photos are over 500 KB each. Consider switching to a lower quality preset to reduce file size.',
+    photoWarnItem: (n, kb) => `Photo ${n}: ${kb} KB — try switching to 🟢 Small preset`,
     secQuality: '⚙️ Output Quality & File Size',
     lblQualityDesc: 'Higher quality = larger file. Changing preset re-compresses all photos.',
     qLow:    '🟢 Small\nBest for sharing\n~Low detail',
@@ -771,7 +890,7 @@ const T = {
     secShareMsg: '💬 Share Message',
     lblShareMsg: 'Message to send with the file',
     lblShareHint: 'Sent alongside the .html file on WhatsApp, Telegram, etc.',
-    defaultShareMsg: (title) => `📸 Check out this documentary I made: "${title}"\n\nYou can create your own event documentary — for free — using the PECO app:\n🔗https://peco-app-baggi.netlify.app`,
+    defaultShareMsg: (title) => `📸 Check out this documentary I made: "${title}"\n\nYou can create your own event documentary — for free — using the PECO app:\n🔗 https://peco-app-baggi.netlify.app`,
     lblModalTitle: '📄 Generated HTML Preview',
     lblLoading: 'Loading…',
     cats: ['📸 Photography','🎉 Celebration','🌍 Travel','🎪 Event','🕌 Cultural','🎓 Ceremony','🌿 Nature','🏛️ Documentary'],
@@ -804,7 +923,14 @@ const T = {
     lblPhotographer: 'المصور / الكاتب',
     lblMapLink: '🗺️ أضف رابط خريطة جوجل',
     lblCoverTap: 'اضغط لاختيار صورة الغلاف',
-    lblGalHint: 'حتى ١٢ صورة • مرر فوق صورة لحذفها',
+    lblGalHint: 'حتى ١٢ صورة • اضغط ✏️ لإضافة تعليق',
+    captionPlaceholder: 'أضف تعليقاً…',
+    captionSheetLabel: '✏️ تعليق الصورة',
+    captionSheetSave: '✓ حفظ التعليق',
+    captionSheetClear: '🗑️ مسح',
+    photoWarnTitle: '⚠️ صور كبيرة الحجم',
+    photoWarnBody: 'هذه الصور تتجاوز ٥٠٠ كيلوبايت. جرب تغيير الجودة إلى منخفضة لتقليل حجم الملف.',
+    photoWarnItem: (n, kb) => `صورة ${n}: ${kb} كيلوبايت — جرب الإعداد 🟢 الصغير`,
     secQuality: '⚙️ جودة الملف وحجمه',
     lblQualityDesc: 'جودة أعلى = حجم أكبر. تغيير الإعداد يعيد ضغط الصور.',
     qLow:    '🟢 صغير\nأفضل للمشاركة\n~تفاصيل منخفضة',
@@ -833,7 +959,7 @@ const T = {
     cats: ['📸 تصوير','🎉 احتفال','🌍 سفر','🎪 فعالية','🕌 ثقافي','🎓 حفل تخرج','🌿 طبيعة','🏛️ وثائقي'],
     placeholders: {
       title: 'مثال: إحتفال الجالية بعيد الفطر المبارك',
-      subtitle: 'مثال: بالنادي السوداني ',
+      subtitle: 'مثال: بالنادي السوداني',
       desc: 'اكتب عن هذا الحدث أو المكان أو المناسبة…',
       location: 'المدينة، البلد',
       photographer: 'الاسم أو المعرف',
@@ -853,7 +979,6 @@ function triggerInput(id) {
 }
 
 function compress(file, maxW, quality) {
-  // quality and maxW can be passed explicitly, or fall back to current preset
   const p = PRESETS[currentPreset];
   const w = maxW !== undefined ? maxW : p.coverW;
   const q = quality !== undefined ? quality : p.q;
@@ -884,6 +1009,46 @@ function escHtml(s) {
 
 function getVal(id) { return document.getElementById(id).value.trim(); }
 
+// ── PER-PHOTO SIZE WARNING ──
+// base64 length * 0.75 ≈ binary bytes
+function photoBytes(b64) { return Math.round(b64.length * 0.75); }
+
+function updatePhotoWarnings() {
+  const t = T[lang];
+  const banner = document.getElementById('photoWarnBanner');
+  const list   = document.getElementById('photoWarnList');
+  const title  = document.getElementById('photoWarnTitle');
+
+  const oversized = [];
+  galleryB64.forEach((b64, i) => {
+    const bytes = photoBytes(b64);
+    if (bytes > PHOTO_SIZE_CAP) {
+      oversized.push({ n: i + 1, kb: Math.round(bytes / 1024) });
+    }
+  });
+
+  if (oversized.length === 0) {
+    banner.classList.remove('visible');
+    return;
+  }
+
+  title.textContent = t.photoWarnTitle;
+  list.innerHTML = oversized
+    .map(o => `<li>${t.photoWarnItem(o.n, o.kb)}</li>`)
+    .join('');
+
+  // Add body text as a <p> before the list if not already there
+  let bodyP = banner.querySelector('.warn-body');
+  if (!bodyP) {
+    bodyP = document.createElement('p');
+    bodyP.className = 'warn-body';
+    bodyP.style.cssText = 'margin-top:0.3rem; font-size:0.75rem;';
+    banner.insertBefore(bodyP, list);
+  }
+  bodyP.textContent = t.photoWarnBody;
+  banner.classList.add('visible');
+}
+
 // ── COVER ──
 async function handleCover(input) {
   if (!input.files[0]) return;
@@ -911,22 +1076,51 @@ async function handleGallery(input) {
   const results = await Promise.all(toProcess.map(f => compress(f, p.galW, p.q)));
   rawGalleryFiles = [...rawGalleryFiles, ...toProcess];
   galleryB64 = [...galleryB64, ...results];
+  // NEW: seed empty captions for new photos
+  toProcess.forEach(() => galleryCaptions.push(''));
   renderGalleryGrid();
   updatePreview();
   updateSizeMeter();
+  updatePhotoWarnings();
   input.value = '';
 }
 
+// ── RENDER GALLERY GRID (with caption inputs) ──
 function renderGalleryGrid() {
+  const t = T[lang];
   const grid = document.getElementById('galleryGrid');
   grid.innerHTML = '';
+
   galleryB64.forEach((src, i) => {
+    const bytes = photoBytes(src);
+    const isLarge = bytes > PHOTO_SIZE_CAP;
+    const kb = Math.round(bytes / 1024);
+    const cap = galleryCaptions[i] || '';
+
     const item = document.createElement('div');
     item.className = 'gallery-item';
-    item.innerHTML = `<img src="${src}" alt="photo ${i+1}">
-      <button class="del-btn" onclick="removeGalleryPhoto(${i})">×</button>`;
+
+    // Size warning badge (top-left)
+    const warnBadge = isLarge
+      ? `<div class="photo-size-warn">⚠️ ${kb}KB</div>`
+      : '';
+
+    // Caption badge (bottom) — shows pencil icon if empty, text preview if set
+    const capPreview = cap
+      ? cap.length > 14 ? cap.slice(0, 12) + '…' : cap
+      : `✏️ ${t.captionPlaceholder}`;
+
+    item.innerHTML = `
+      ${warnBadge}
+      <img class="gallery-item-img" src="${src}" alt="photo ${i+1}">
+      <button class="del-btn" onclick="removeGalleryPhoto(${i})" title="Remove">×</button>
+      <div class="caption-badge ${cap ? '' : 'empty'}" onclick="openCaptionSheet(${i})">${escHtml(capPreview)}</div>
+    `;
+
     grid.appendChild(item);
   });
+
+  // Add button
   if (galleryB64.length < 12) {
     const add = document.createElement('div');
     add.className = 'gallery-add';
@@ -939,9 +1133,11 @@ function renderGalleryGrid() {
 function removeGalleryPhoto(i) {
   galleryB64.splice(i, 1);
   rawGalleryFiles.splice(i, 1);
+  galleryCaptions.splice(i, 1);  // keep in sync
   renderGalleryGrid();
   updatePreview();
   updateSizeMeter();
+  updatePhotoWarnings();
 }
 
 // ── CATEGORY CHIPS ──
@@ -958,11 +1154,9 @@ document.getElementById('categoryChips').addEventListener('click', e => {
 ['inpTitle','inpSubtitle','inpDesc','inpDate','inpLocation','inpPhotographer'].forEach(id => {
   document.getElementById(id).addEventListener('input', () => {
     updatePreview();
-    // Keep share message in sync with title if user hasn't manually edited it
     const t = T[lang];
     const msgEl = document.getElementById('inpShareMsg');
     const currentTitle = getVal('inpTitle') || t.noTitle;
-    // Only auto-update if the message still looks like a default (contains the PECO URL)
     if (msgEl.value.includes('https://peco-app-baggi.netlify.app')) {
       msgEl.value = t.defaultShareMsg(currentTitle);
     }
@@ -1003,11 +1197,23 @@ function updatePreview() {
   if (photographer) meta.innerHTML += `<span class="out-meta-chip">👤 ${escHtml(photographer)}</span>`;
   if (galleryB64.length) meta.innerHTML += `<span class="out-meta-chip">🖼️ ${galleryB64.length} photo${galleryB64.length > 1 ? 's' : ''}</span>`;
 
-  // gallery
+  // gallery with captions
   const og = document.getElementById('outGallery');
   og.innerHTML = '';
-  galleryB64.slice(0, 9).forEach(src => {
-    const img = document.createElement('img'); img.src = src; og.appendChild(img);
+  galleryB64.slice(0, 9).forEach((src, i) => {
+    const div = document.createElement('div');
+    div.className = 'out-gallery-item';
+    const img = document.createElement('img');
+    img.src = src;
+    div.appendChild(img);
+    const cap = galleryCaptions[i] || '';
+    if (cap) {
+      const capEl = document.createElement('div');
+      capEl.className = 'out-gallery-caption';
+      capEl.textContent = cap;
+      div.appendChild(capEl);
+    }
+    og.appendChild(div);
   });
 
   // map
@@ -1017,10 +1223,8 @@ function updatePreview() {
     : '';
 
   // footer
-  const photographerEl = document.getElementById('outPhotographer');
-  const genDateEl = document.getElementById('outGenDate');
-  photographerEl.textContent = photographer || '';
-  genDateEl.innerHTML = lang === 'ar'
+  document.getElementById('outPhotographer').textContent = photographer || '';
+  document.getElementById('outGenDate').innerHTML = lang === 'ar'
     ? `أنشئ توثيقك مع <a href="https://peco-app-baggi.netlify.app" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">PECO 🔗</a>`
     : `Create your own with <a href="https://peco-app-baggi.netlify.app" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">PECO 🔗</a>`;
 }
@@ -1045,9 +1249,17 @@ function buildOutputHTML() {
     ? `background-image:url(${coverB64}); background-size:cover; background-position:center;`
     : `background: linear-gradient(135deg,#1a1a2e,#3b3060);`;
 
-  const galleryImgs = galleryB64.map(src =>
-    `<img src="${src}" class="gal-img" loading="lazy" alt="photo">`
-  ).join('');
+  // Gallery items with optional caption
+  const galleryImgs = galleryB64.map((src, i) => {
+    const cap = (galleryCaptions[i] || '').trim();
+    if (cap) {
+      return `<div class="gal-item">
+        <img src="${src}" class="gal-img" loading="lazy" alt="${escHtml(cap)}">
+        <div class="gal-cap">${escHtml(cap)}</div>
+      </div>`;
+    }
+    return `<div class="gal-item"><img src="${src}" class="gal-img" loading="lazy" alt="photo ${i+1}"></div>`;
+  }).join('');
 
   const mapBtn = hasMap && location
     ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}" class="map-btn" target="_blank">${t.seeMap}</a>`
@@ -1059,6 +1271,9 @@ function buildOutputHTML() {
     photographer && `<span class="chip">👤 ${escHtml(photographer)}</span>`,
     selectedCategory && `<span class="chip">${escHtml(selectedCategory)}</span>`,
   ].filter(Boolean).join('');
+
+  // Check if any photos have captions to include caption CSS
+  const hasCaptions = galleryCaptions.some(c => c && c.trim());
 
   return `<!DOCTYPE html>
 <html lang="${lang}" dir="${isRTL ? 'rtl' : 'ltr'}">
@@ -1081,8 +1296,10 @@ h1{font-family:'Playfair Display',serif;font-size:1.8rem;line-height:1.2;margin-
 .desc{font-size:.9rem;line-height:1.7;color:#cbd5e1;margin-bottom:1rem;white-space:pre-wrap;}
 .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;}
 .chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:.28rem .7rem;border-radius:2rem;font-size:.72rem;color:#cbd5e1;}
-.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;margin-bottom:1rem;}
-.gal-img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:.4rem;}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-bottom:1rem;}
+.gal-item{display:flex;flex-direction:column;}
+.gal-img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:.4rem;display:block;}
+${hasCaptions ? `.gal-cap{font-size:.65rem;color:#94a3b8;text-align:center;padding:.25rem .2rem 0;line-height:1.3;font-style:italic;}` : ''}
 .map-btn{display:inline-flex;align-items:center;gap:.4rem;background:#22c55e;color:#fff;padding:.55rem 1.1rem;border-radius:.5rem;font-size:.82rem;font-weight:700;text-decoration:none;margin-bottom:.8rem;}
 .footer{border-top:1px solid rgba(255,255,255,.07);padding-top:.8rem;font-size:.7rem;color:#475569;display:flex;flex-direction:column;gap:.3rem;}
 .footer-credit{color:#64748b;line-height:1.5;}
@@ -1142,10 +1359,7 @@ function closePreview() {
   setTimeout(() => { if (frame.src) { URL.revokeObjectURL(frame.src); frame.src = ''; } }, 300);
 }
 
-// ── FILENAME HELPER ──
-// Format: <first4charsOfCategory(letters only)>-<ddmmyy>.html
-// e.g. "📸 Photography" + 2025-07-14  →  phot-140725.html
-// Always uses English category name regardless of UI language.
+// ── FILENAME ──
 function buildFilename() {
   const currentCats = T[lang].cats;
   const enCats = T.en.cats;
@@ -1153,14 +1367,11 @@ function buildFilename() {
   const enCat = idx !== -1 ? enCats[idx] : selectedCategory;
   const catClean = enCat.replace(/[^a-zA-Z]/g, '').toLowerCase();
   const cat4 = catClean.slice(0, 4) || 'peco';
-
-  // Date: use selected date if present, else today
   const dateRaw = getVal('inpDate');
   const d = dateRaw ? new Date(dateRaw + 'T12:00:00') : new Date();
   const dd = String(d.getDate()).padStart(2, '0');
   const mm = String(d.getMonth() + 1).padStart(2, '0');
   const yy = String(d.getFullYear()).slice(-2);
-
   return `${cat4}-${dd}${mm}${yy}.html`;
 }
 
@@ -1180,45 +1391,27 @@ function doDownload() {
 }
 
 // ── SHARE ──
-// WhatsApp and most apps drop the `text` field when a file is attached —
-// platform limitation of Web Share API. Workaround: copy message to
-// clipboard first, then open share sheet, then show a toast to paste it.
 async function doShare() {
-  const btn = document.getElementById('btnShare');
   const t = T[lang];
   const shareText = getVal('inpShareMsg') || t.defaultShareMsg(getVal('inpTitle') || t.noTitle);
   const shareTitle = getVal('inpTitle') || 'PECO Event';
-
-  // Step 1: copy message to clipboard silently
   try { await navigator.clipboard.writeText(shareText); } catch(_) {}
-
   const html = buildOutputHTML();
   const filename = buildFilename();
   const file = new File([html], filename, {type: 'text/html'});
-
-  // Step 2: Try Web Share API level 2 (file sharing — Android/iOS)
   if (navigator.canShare && navigator.canShare({files: [file]})) {
     try {
       await navigator.share({ title: shareTitle, text: shareText, files: [file] });
-      // After share sheet closes, show paste reminder
       showShareToast(t.shareToastMsg);
       return;
-    } catch(e) {
-      if (e.name === 'AbortError') return;
-    }
+    } catch(e) { if (e.name === 'AbortError') return; }
   }
-
-  // Step 3: Share text only (no file support)
   if (navigator.share) {
     try {
       await navigator.share({ title: shareTitle, text: shareText });
       return;
-    } catch(e) {
-      if (e.name === 'AbortError') return;
-    }
+    } catch(e) { if (e.name === 'AbortError') return; }
   }
-
-  // Step 4: Final fallback — download + show clipboard toast
   showShareToast(t.shareFallback);
   doDownload();
 }
@@ -1228,14 +1421,7 @@ function showShareToast(msg) {
   if (!toast) {
     toast = document.createElement('div');
     toast.id = 'shareToast';
-    toast.style.cssText = `
-      position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%);
-      background:#1e293b; color:#f1f5f9; padding:0.75rem 1.2rem;
-      border-radius:0.75rem; font-size:0.85rem; font-weight:500;
-      box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:9999;
-      max-width:90vw; text-align:center; line-height:1.4;
-      border:1px solid #334155; opacity:0; transition:opacity 0.3s;
-    `;
+    toast.style.cssText = `position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1e293b;color:#f1f5f9;padding:0.75rem 1.2rem;border-radius:0.75rem;font-size:0.85rem;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:9999;max-width:90vw;text-align:center;line-height:1.4;border:1px solid #334155;opacity:0;transition:opacity 0.3s;`;
     document.body.appendChild(toast);
   }
   toast.textContent = msg;
@@ -1248,45 +1434,33 @@ function showShareToast(msg) {
 async function setPreset(name) {
   if (name === currentPreset) return;
   currentPreset = name;
-
-  // Update button active states
   document.querySelectorAll('.q-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.preset === name);
   });
-
-  // Re-compress everything with new settings if we have raw files
   const hasImages = rawCoverFile || rawGalleryFiles.length > 0;
   if (!hasImages) return;
-
   const p = PRESETS[currentPreset];
-
-  // Show recompressing overlay on gallery section card
   const galCard = document.getElementById('galleryGrid').closest('.section-card');
   if (galCard) galCard.classList.add('recompressing');
-
   const jobs = [];
   if (rawCoverFile) {
     jobs.push(compress(rawCoverFile, p.coverW, p.q).then(b64 => {
       coverB64 = b64;
-      const drop = document.getElementById('coverDrop');
-      const img = drop.querySelector('img');
+      const img = document.getElementById('coverDrop').querySelector('img');
       if (img) img.src = b64;
     }));
   }
   if (rawGalleryFiles.length) {
     jobs.push(
       Promise.all(rawGalleryFiles.map(f => compress(f, p.galW, p.q)))
-        .then(results => {
-          galleryB64 = results;
-          renderGalleryGrid();
-        })
+        .then(results => { galleryB64 = results; renderGalleryGrid(); })
     );
   }
-
   await Promise.all(jobs);
   if (galCard) galCard.classList.remove('recompressing');
   updatePreview();
   updateSizeMeter();
+  updatePhotoWarnings();
 }
 
 // ── SIZE METER ──
@@ -1296,51 +1470,99 @@ function updateSizeMeter() {
   const hasImages = coverB64 || galleryB64.length > 0;
   if (!hasImages) { meter.style.display = 'none'; return; }
   meter.style.display = 'block';
-
-  // Estimate: base HTML ~8KB + images
-  const coverBytes  = coverB64  ? Math.round(coverB64.length * 0.75) : 0;
-  const galBytes    = galleryB64.reduce((sum, b) => sum + Math.round(b.length * 0.75), 0);
-  const baseBytes   = 8 * 1024;
-  const totalBytes  = baseBytes + coverBytes + galBytes;
-  const totalKB     = totalBytes / 1024;
-  const totalMB     = totalKB / 1024;
-
-  const displaySize = totalMB >= 1
+  const coverBytes = coverB64 ? Math.round(coverB64.length * 0.75) : 0;
+  const galBytes   = galleryB64.reduce((sum, b) => sum + Math.round(b.length * 0.75), 0);
+  const baseBytes  = 8 * 1024;
+  const totalBytes = baseBytes + coverBytes + galBytes;
+  const totalMB    = totalBytes / (1024 * 1024);
+  document.getElementById('sizeValue').textContent = totalMB >= 1
     ? totalMB.toFixed(2) + ' MB'
-    : Math.round(totalKB) + ' KB';
-
-  document.getElementById('sizeValue').textContent = displaySize;
-
-  // Bar: 0–5MB scale, cap at 100%
+    : Math.round(totalBytes / 1024) + ' KB';
   const MAX_BAR = 5 * 1024 * 1024;
   const pct = Math.min(100, (totalBytes / MAX_BAR) * 100);
   const fill = document.getElementById('sizeBarFill');
   fill.style.width = pct + '%';
-
-  // Color thresholds: <1MB green, 1–3MB amber, >3MB red
   let statusText, barColor;
-  if (totalBytes < 1 * 1024 * 1024) {
-    statusText = t.sizeOk;   barColor = '#3b9c5c';
-  } else if (totalBytes < 3 * 1024 * 1024) {
-    statusText = t.sizeWarn; barColor = '#f59e0b';
-  } else {
-    statusText = t.sizeBig;  barColor = '#ef4444';
-  }
+  if (totalBytes < 1 * 1024 * 1024)      { statusText = t.sizeOk;   barColor = '#3b9c5c'; }
+  else if (totalBytes < 3 * 1024 * 1024) { statusText = t.sizeWarn; barColor = '#f59e0b'; }
+  else                                    { statusText = t.sizeBig;  barColor = '#ef4444'; }
   fill.style.background = barColor;
-  const statusEl = document.getElementById('sizeStatus');
-  statusEl.textContent = statusText;
-  statusEl.style.color = barColor;
-
-  // Breakdown
+  document.getElementById('sizeStatus').textContent = statusText;
+  document.getElementById('sizeStatus').style.color = barColor;
   const parts = [];
   if (coverBytes) parts.push(`🖼️ Cover: ${Math.round(coverBytes/1024)} KB`);
-  if (galBytes)   parts.push(`🗂️ Gallery (${galleryB64.length} photos): ${Math.round(galBytes/1024)} KB`);
+  if (galBytes)   parts.push(`🗂️ Gallery (${galleryB64.length}): ${Math.round(galBytes/1024)} KB`);
   parts.push(`📄 HTML: ~${Math.round(baseBytes/1024)} KB`);
-  document.getElementById('sizeBreakdown').innerHTML =
-    parts.map(p => `<span>${p}</span>`).join('');
+  document.getElementById('sizeBreakdown').innerHTML = parts.map(p => `<span>${p}</span>`).join('');
 }
 
+// ── CAPTION BOTTOM SHEET ──
+let captionSheetIndex = -1;
 
+function openCaptionSheet(i) {
+  const t = T[lang];
+  captionSheetIndex = i;
+
+  const sheet    = document.getElementById('captionSheet');
+  const backdrop = document.getElementById('captionBackdrop');
+  const photo    = document.getElementById('captionSheetPhoto');
+  const input    = document.getElementById('captionSheetInput');
+  const label    = document.getElementById('captionSheetLabel');
+  const saveBtn  = document.getElementById('captionSheetSave');
+  const clearBtn = document.getElementById('captionSheetClear');
+
+  photo.src = galleryB64[i];
+  input.value = galleryCaptions[i] || '';
+  input.placeholder = t.captionPlaceholder;
+  label.textContent = t.captionSheetLabel || 'Caption';
+  saveBtn.textContent = t.captionSheetSave || '✓ Save';
+  clearBtn.textContent = t.captionSheetClear || '🗑️ Clear';
+
+  // Show
+  backdrop.style.display = 'block';
+  requestAnimationFrame(() => {
+    backdrop.classList.add('open');
+    sheet.classList.add('open');
+  });
+
+  // Focus input after animation
+  setTimeout(() => { input.focus(); input.select(); }, 320);
+
+  // Save on Enter key
+  input.onkeydown = (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); saveCaption(); }
+    if (e.key === 'Escape') { closeCaptionSheet(); }
+  };
+}
+
+function closeCaptionSheet() {
+  const sheet    = document.getElementById('captionSheet');
+  const backdrop = document.getElementById('captionBackdrop');
+  sheet.classList.remove('open');
+  backdrop.classList.remove('open');
+  setTimeout(() => { backdrop.style.display = 'none'; }, 280);
+  captionSheetIndex = -1;
+}
+
+function saveCaption() {
+  if (captionSheetIndex < 0) return;
+  const val = document.getElementById('captionSheetInput').value.trim();
+  galleryCaptions[captionSheetIndex] = val;
+  closeCaptionSheet();
+  renderGalleryGrid();
+  updatePreview();
+}
+
+function clearCaption() {
+  if (captionSheetIndex < 0) return;
+  document.getElementById('captionSheetInput').value = '';
+  galleryCaptions[captionSheetIndex] = '';
+  closeCaptionSheet();
+  renderGalleryGrid();
+  updatePreview();
+}
+
+// ── LANG TOGGLE ──
 function toggleLang() {
   lang = lang === 'en' ? 'ar' : 'en';
   applyLang();
@@ -1352,7 +1574,6 @@ function applyLang() {
   document.documentElement.lang = lang;
   document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
 
-  // update text nodes
   const ids = ['appTitle','langBtn','secCategory','secBasic','secCover','secGallery',
     'lblTitle','lblSubtitle','lblDesc','lblDate','lblLocation','lblPhotographer',
     'lblMapLink','lblCoverTap','lblGalHint','btnCoverCam','btnCoverGal','btnGalCam',
@@ -1364,37 +1585,23 @@ function applyLang() {
     if (el) el.textContent = t[id] || el.textContent;
   });
 
-  // update category chips
   const chips = document.querySelectorAll('#categoryChips .chip');
   chips.forEach((chip, i) => {
     chip.textContent = t.cats[i];
     chip.dataset.val = t.cats[i];
   });
-  // re-select first
   document.querySelectorAll('#categoryChips .chip').forEach(c => c.classList.remove('active'));
   chips[0].classList.add('active');
   selectedCategory = t.cats[0];
 
-  // placeholders
   document.getElementById('inpTitle').placeholder = t.placeholders.title;
   document.getElementById('inpSubtitle').placeholder = t.placeholders.subtitle;
   document.getElementById('inpDesc').placeholder = t.placeholders.desc;
   document.getElementById('inpLocation').placeholder = t.placeholders.location;
   document.getElementById('inpPhotographer').placeholder = t.placeholders.photographer;
 
-  // Seed share message with fresh default for current language
   document.getElementById('inpShareMsg').value = t.defaultShareMsg(getVal('inpTitle') || t.noTitle);
 
-  // Update quality button sub-labels
-  const qLabels = [
-    ['qLowTitle','qLowSub','Small','Best for sharing'],
-    ['qMedTitle','qMedSub','Balanced','Recommended'],
-    ['qHighTitle','qHighSub','High Quality','Best detail'],
-  ];
-  const qKeys = [
-    ['qLow','qMedium','qHigh'],
-  ];
-  // Pull from i18n multiline strings
   [['qLow','qLowTitle','qLowSub'],['qMedium','qMedTitle','qMedSub'],['qHigh','qHighTitle','qHighSub']].forEach(([key, titleId, subId]) => {
     const lines = (t[key] || '').split('\n');
     const titleEl = document.getElementById(titleId);
@@ -1403,28 +1610,27 @@ function applyLang() {
     if (subEl   && lines[2]) subEl.textContent   = lines[2];
   });
 
-  // Refresh size meter labels
-  updateSizeMeter();
+  // Re-render gallery to update caption placeholders in new language
+  if (galleryB64.length > 0) renderGalleryGrid();
 
+  updateSizeMeter();
+  updatePhotoWarnings();
   updatePreview();
 }
 
-// ── MODAL CLICK OUTSIDE ──
+// ── MODAL ──
 document.getElementById('modal').addEventListener('click', e => {
   if (e.target === document.getElementById('modal')) closePreview();
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePreview(); });
 
-// Set today's date
+// ── INIT ──
 document.getElementById('inpDate').value = new Date().toISOString().slice(0,10);
-
-// Set default preset active state (medium)
 document.querySelectorAll('.q-btn').forEach(b => {
   b.classList.toggle('active', b.dataset.preset === currentPreset);
 });
-
-// Init — seed share message and preview
 applyLang();
 </script>
 </body>
 </html>
+
