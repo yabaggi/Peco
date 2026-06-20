@@ -1,17 +1,15 @@
 name: Build APK
 
 on:
-  workflow_dispatch:  # manual trigger
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -22,28 +20,23 @@ jobs:
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
-      - name: Init TWA project
+      - name: Accept Android licenses
+        run: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
+
+      - name: Init TWA
         run: |
-          mkdir twa-build && cd twa-build
-          bubblewrap init --manifest https://yabaggi.github.io/Peco/manifest.json \
-            --directory . \
-            --packageId com.yabaggi.peco \
-            --name "PECO Documentary App" \
-            --launcherName "PECO" \
-            --display standalone \
-            --themeColor "#2196f3" \
-            --backgroundColor "#ffffff" \
-            --startUrl "/" \
-            --iconUrl "https://yabaggi.github.io/Peco/icons/icon-512x512.png" \
-            --maskableIconUrl "https://yabaggi.github.io/Peco/icons/icon-512x512.png"
+          mkdir twa && cd twa
+          echo -e "n\n" | bubblewrap init \
+            --manifest "https://yabaggi.github.io/Peco/manifest.json" \
+            --directory "."
 
       - name: Build APK
         run: |
-          cd twa-build
-          bubblewrap build --skipPwaValidation
+          cd twa
+          echo -e "\n\n\n\n" | bubblewrap build --skipPwaValidation
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: peco-apk
-          path: twa-build/app-release-signed.apk
+          path: twa/app-release-signed.apk
