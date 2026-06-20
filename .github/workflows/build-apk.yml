@@ -17,19 +17,84 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Clone TWA Quickstart template
-        run: |
-          git clone https://github.com/GoogleChromeLabs/svgomg-twa.git twa
-          cd twa
+      - name: Clone modern TWA template
+        run: git clone https://github.com/chromeos/pwa-play-billing.git twa || \
+             git clone https://github.com/GoogleChromeLabs/bubblewrap.git bubblewrap-src
 
-      - name: Configure TWA
+      - name: Create TWA project from scratch
         run: |
-          cd twa
-          # Set your app details
-          sed -i 's|https://svgomg.firebaseapp.com|https://yabaggi.github.io/Peco/|g' app/build.gradle
-          sed -i 's|com.svgomg.twa|com.yabaggi.peco|g' app/build.gradle
-          sed -i 's|SVGOMG|PECO|g' app/build.gradle
-          sed -i 's|SVGOMG - SVG Optimizer|PECO Documentary App|g' app/build.gradle
+          mkdir -p twa/app/src/main
+          cat > twa/settings.gradle << 'GRADLE'
+          include ':app'
+          GRADLE
+
+          cat > twa/build.gradle << 'GRADLE'
+          buildscript {
+            repositories { google(); mavenCentral() }
+            dependencies {
+              classpath 'com.android.tools.build:gradle:8.1.0'
+            }
+          }
+          allprojects {
+            repositories { google(); mavenCentral() }
+          }
+          GRADLE
+
+          cat > twa/gradle/wrapper/gradle-wrapper.properties << 'GRADLE'
+          distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
+          GRADLE
+
+          cat > twa/app/build.gradle << 'GRADLE'
+          plugins { id 'com.android.application' }
+          android {
+            compileSdk 34
+            defaultConfig {
+              applicationId "com.yabaggi.peco"
+              minSdk 21
+              targetSdk 34
+              versionCode 1
+              versionName "1.0"
+              manifestPlaceholders = [
+                hostName: "yabaggi.github.io",
+                launchUrl: "/Peco/",
+                appName: "PECO"
+              ]
+            }
+            buildTypes {
+              release { minifyEnabled false }
+            }
+          }
+          dependencies {
+            implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+          }
+          GRADLE
+
+          cat > twa/app/src/main/AndroidManifest.xml << 'XML'
+          <?xml version="1.0" encoding="utf-8"?>
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+            <application
+              android:label="${appName}"
+              android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+              <activity android:name="com.google.androidbrowserhelper.trusted.LauncherActivity"
+                android:exported="true">
+                <meta-data android:name="android.support.customtabs.trusted.DEFAULT_URL"
+                  android:value="https://${hostName}${launchUrl}" />
+                <intent-filter android:autoVerify="true">
+                  <action android:name="android.intent.action.MAIN"/>
+                  <category android:name="android.intent.category.LAUNCHER"/>
+                </intent-filter>
+                <intent-filter android:autoVerify="true">
+                  <action android:name="android.intent.action.VIEW"/>
+                  <category android:name="android.intent.category.DEFAULT"/>
+                  <category android:name="android.intent.category.BROWSABLE"/>
+                  <data android:scheme="https"
+                    android:host="${hostName}"
+                    android:pathPrefix="${launchUrl}"/>
+                </intent-filter>
+              </activity>
+            </application>
+          </manifest>
+          XML
 
       - name: Accept Android licenses
         run: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
@@ -37,6 +102,8 @@ jobs:
       - name: Build APK
         run: |
           cd twa
+          chmod +x gradlew 2>/dev/null || \
+          curl -o gradlew https://raw.githubusercontent.com/gradle/gradle/master/gradlew && \
           chmod +x gradlew
           ./gradlew assembleRelease
 
