@@ -2,7 +2,7 @@
   "id": "pecox-id",
   "name": "PECO Documentary App",
   "short_name": "PECO Documen",
-  "description": "",
+  "description": "Event Documentary Builder",
   "start_url": "/Peco/",
   "scope": "/Peco/",
   "display": "standalone",
