@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v4
@@ -17,26 +17,31 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Install Bubblewrap
-        run: npm install -g @bubblewrap/cli
+      - name: Clone TWA Quickstart template
+        run: |
+          git clone https://github.com/GoogleChromeLabs/svgomg-twa.git twa
+          cd twa
+
+      - name: Configure TWA
+        run: |
+          cd twa
+          # Set your app details
+          sed -i 's|https://svgomg.firebaseapp.com|https://yabaggi.github.io/Peco/|g' app/build.gradle
+          sed -i 's|com.svgomg.twa|com.yabaggi.peco|g' app/build.gradle
+          sed -i 's|SVGOMG|PECO|g' app/build.gradle
+          sed -i 's|SVGOMG - SVG Optimizer|PECO Documentary App|g' app/build.gradle
 
       - name: Accept Android licenses
         run: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
-      - name: Init TWA
-        run: |
-          mkdir twa && cd twa
-          echo -e "n\n" | bubblewrap init \
-            --manifest "https://yabaggi.github.io/Peco/manifest.json" \
-            --directory "."
-
       - name: Build APK
         run: |
           cd twa
-          echo -e "\n\n\n\n" | bubblewrap build --skipPwaValidation
+          chmod +x gradlew
+          ./gradlew assembleRelease
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: peco-apk
-          path: twa/app-release-signed.apk
+          path: twa/app/build/outputs/apk/release/*.apk
