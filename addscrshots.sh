@@ -1,3 +1,5 @@
+cd ~/pwaApps/Peco
+cat > manifest.json << 'EOF'
 {
   "id": "com.yabaggi.peco",
   "name": "PECO Documentary App",
@@ -93,3 +95,9 @@
   ],
   "categories": ["utilities", "productivity"]
 }
+EOF
+
+#git add manifest.json
+#git commit -m "Fix manifest: start_url,separate
+#maskable icons, screenshots"
+#git push
