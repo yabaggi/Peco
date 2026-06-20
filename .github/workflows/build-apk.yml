@@ -25,9 +25,13 @@ jobs:
 
       - name: Build APK with pwa2apk
         run: |
-          npx pwa2apk https://yabaggi.github.io/Peco/manifest.json \
+          git clone --depth 1 https://github.com/trycua/pwa2apk.git
+          cd pwa2apk
+          npm install
+          node bin/pwa2apk.js \
+            https://yabaggi.github.io/Peco/manifest.json \
             --package com.yabaggi.peco \
-            --output ./peco.apk
+            --output ../peco.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
