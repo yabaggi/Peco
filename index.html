@@ -1654,7 +1654,7 @@ applyLang();
 
 
 
-<script>if('serviceWorker' in navigator)window.addEventListener('load',()=>{navigator.serviceWorker.register('/Peco/sw.js').then(r=>console.log('SW registered:',r)).catch(e=>console.error('SW registration failed:',e))})</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/Peco/sw.js').then(r=>console.log('SW registered:',r)).catch(e=>console.error('SW registration failed:',e))</script>
 
 
 </body>
